@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Random Number</title>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            var socket = new WebSocket('ws://' + window.location.host + '/ws/number/');
+
+            socket.onopen = function(e) {
+                console.log("WebSocket connection opened");
+            };
+
+            socket.onmessage = function(e) {
+                var data = JSON.parse(e.data);
+                console.log("Received data:", data);
+                document.getElementById('number').innerText = data.number;
+            };
+
+            socket.onerror = function(error) {
+                console.error('WebSocket Error:', error);
+            };
+
+            socket.onclose = function(event) {
+                if (event.wasClean) {
+                    console.log('WebSocket closed cleanly');
+                } else {
+                    console.error('Connection interrupted');
+                }
+                console.log('Code:', event.code, 'Reason:', event.reason);
+            };
+        });
+    </script>
+</head>
+<body>
+    <h1>Random Number: <span id="number">Loading...</span></h1>
+    <a href="{% url 'logout' %}">Logout</a>
+</body>
+</html>

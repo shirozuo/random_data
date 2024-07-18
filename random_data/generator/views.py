@@ -1,11 +1,17 @@
 import random
 
 from django.contrib.auth import logout as auth_logout
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.http import JsonResponse
 from django.shortcuts import redirect, render
 from django.views import View
 
 from .models import RandomNumber
+
+
+class IndexView(LoginRequiredMixin, View):
+    def get(self, request):
+        return render(request, 'generator/index.html')
 
 
 class LoginView(View):
