@@ -1,7 +1,22 @@
-from django.http import JsonResponse
-from django.views import View
-from .models import RandomNumber
 import random
+
+from django.contrib.auth import logout as auth_logout
+from django.http import JsonResponse
+from django.shortcuts import redirect, render
+from django.views import View
+
+from .models import RandomNumber
+
+
+class LoginView(View):
+    def get(self, request):
+        return render(request, 'generator/login.html')
+
+
+class LogoutView(View):
+    def get(self, request):
+        auth_logout(request)
+        return redirect('login')
 
 
 class GenerateRandomNumberView(View):
