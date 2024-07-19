@@ -11,8 +11,8 @@
             };
 
             socket.onmessage = function(e) {
+                console.log("Received message:", e.data);
                 var data = JSON.parse(e.data);
-                console.log("Received data:", data);
                 document.getElementById('number').innerText = data.number;
             };
 
