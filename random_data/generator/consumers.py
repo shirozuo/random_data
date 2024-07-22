@@ -1,6 +1,7 @@
 import json
 from channels.generic.websocket import AsyncWebsocketConsumer
 from .models import RandomNumber
+from asgiref.sync import sync_to_async
 
 
 # WebSocket consumer for handling random numbers
@@ -18,7 +19,7 @@ class NumberConsumer(AsyncWebsocketConsumer):
         # Log received data from client
         print("Received data from client:", text_data)
         # Get the latest generated number from the database
-        latest_number = RandomNumber.objects.latest('timestamp')
+        latest_number = await sync_to_async(RandomNumber.objects.latest)('timestamp')
         print("Sending data to client:", latest_number.number)
         # Send data to the client
         await self.send(text_data=json.dumps({

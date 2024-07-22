@@ -1,0 +1,7 @@
+.idea
+.venv/
+/.gitignore
+/random_data/db.sqlite3
+/random_data/config.json
+/random_data/venv/
+/random_data/logs/
