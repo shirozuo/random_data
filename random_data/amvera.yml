@@ -1,0 +1,10 @@
+name: random_data
+runtime: python-3.8
+
+build:
+  commands:
+    - pip install -r requirements.txt
+
+deploy:
+  commands:
+    - ./start_all.bat
