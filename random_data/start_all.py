@@ -1,4 +1,7 @@
+import os
 import subprocess
+
+os.chdir('random_data')
 
 subprocess.Popen(["daphne", "-p", "8000", "random_data.asgi:application"])
 
