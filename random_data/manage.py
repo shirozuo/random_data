@@ -1,6 +1,7 @@
 import os
 import sys
 
+# Main entry point for the Django project
 if __name__ == "__main__":
     os.environ.setdefault("DJANGO_SETTINGS_MODULE", "random_data.settings")
     try:

@@ -2,8 +2,34 @@
 <html>
 <head>
     <title>Login</title>
+    <!-- Add meta tags for responsive design and character encoding -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Add some basic styling for the login link -->
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+        a {
+            padding: 10px 20px;
+            background-color: #333;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+        a:hover {
+            background-color: #555;
+        }
+    </style>
 </head>
 <body>
-    <a href="{% url 'social:begin' 'github' %}">Войти с помощью GitHub</a>
+    <!-- Link to start the OAuth login process with GitHub -->
+    <a href="{% url 'social:begin' 'github' %}">Login with GitHub</a>
 </body>
 </html>
